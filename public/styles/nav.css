@@ -20,3 +20,23 @@
   line-height: 80px;
   margin-left: 10px;
 }
+
+#compose {
+  border-radius: 10px;
+  border: 1px solid;
+  border-color: black;
+  width: 100px;
+  /* height: 100%; */
+  margin: 10px;
+  background-color: #e7fdff;
+  color: #00a087;
+  float: right;
+  text-align: center;
+  line-height: 60px;
+}
+
+#compose:hover {
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}

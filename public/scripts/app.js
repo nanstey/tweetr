@@ -44,6 +44,7 @@ function renderTweets(tweetsArr){
     var tweet = createTweetElement( tweetsArr[i] );
     $('#tweets-container').prepend(tweet);
   }
+  hoverTweet();
 }
 
 function loadTweets(){
@@ -58,6 +59,24 @@ function loadTweets(){
   });
 }
 
+function flash(msg){
+  var flash = $(".flash");
+  flash.text(msg);
+  flash.fadeIn('fast');
+  setTimeout(function(){
+    flash.fadeOut("slow");
+  }, 2000);
+}
+
+function hoverTweet(){
+  $('.tweet')
+    .on('mouseover', function(){
+      $(this).addClass('tweet-hover');
+  }).on('mouseleave', function(){
+      $(this).removeClass('tweet-hover');
+  });
+}
+
 
 $(document).ready( function(){
 
@@ -66,20 +85,24 @@ $(document).ready( function(){
   $('#submit-tweet').on('click', function (event){
     event.preventDefault();
     var count = Number( $('.counter').text() );
-    if (count >= 0){
+    if (count === 140){
+      flash('Empty Tweet!');
+    } else if (count >= 0){
       $.ajax({
         url: '/tweets',
         method: 'POST',
         data: $('form textarea').serialize()
       })
       .done(function(responseText) {
+        $('form textarea').val("");
+        $('.counter').text('140');
         renderTweets([responseText]);
       })
       .fail(function(err) {
         console.log(err);
       });
     } else {
-      console.log('Too many characters!')
+      flash('Too many characters!')
     }
   });
 
