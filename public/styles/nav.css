@@ -22,17 +22,16 @@
 }
 
 #compose {
-  border-radius: 10px;
+  border-radius: 5px;
   border: 1px solid;
   border-color: black;
   width: 100px;
-  /* height: 100%; */
-  margin: 10px;
+  margin: 15px;
   background-color: #e7fdff;
   color: #00a087;
   float: right;
   text-align: center;
-  line-height: 60px;
+  line-height: 50px;
 }
 
 #compose:hover {

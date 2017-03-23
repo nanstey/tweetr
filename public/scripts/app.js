@@ -4,9 +4,9 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-function timeAgo(timestamp){
-  return 'A long time ago...';
-}
+// function timeAgo(timestamp){
+//   return 'A long time ago...';
+// }
 
 function createTweetElement(tweetObj){
   var $tweet = $("<article>").addClass("tweet");
@@ -24,7 +24,11 @@ function createTweetElement(tweetObj){
   $tweet.append($content);
 
   var $footer = $('<footer>');
-  var $time = $('<span>').addClass('tweet-time').text( timeAgo(tweetObj.created_at) );
+  var date = new Date(tweetObj.created_at).toJSON();
+  var $time = $('<time>')
+    .addClass('tweet-time timeago')
+    .attr('datetime', date )
+    .text( date );
   $footer.append($time);
   var $social = $('<div>').addClass('social');
   var $reply = $('<a>').addClass('icon reply fa fa-flag');
@@ -45,6 +49,7 @@ function renderTweets(tweetsArr){
     $('#tweets-container').prepend(tweet);
   }
   hoverTweet();
+  $("time.timeago").timeago();
 }
 
 function loadTweets(){
@@ -80,6 +85,7 @@ function hoverTweet(){
 
 $(document).ready( function(){
 
+  // Initializations
   loadTweets();
 
   $('#submit-tweet').on('click', function (event){
