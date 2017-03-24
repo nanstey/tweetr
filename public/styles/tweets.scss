@@ -1,0 +1,91 @@
+#tweets-container {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.tweet {
+  margin: 20px 2em;
+  overflow: auto;
+  background-color: $grey-color;
+  border-radius: 10px;
+  border: 1px solid;
+  border-color: $grey-color;
+
+  header {
+    padding: 10px;
+    position: relative;
+    overflow: auto;
+  }
+
+  img {
+    width: 50px;
+    height: 50px;
+    float: left;
+  }
+
+  h2 {
+    float: left;
+    text-align: left;
+    margin: 0px;
+    padding-left: 10px;
+  }
+
+  .handle {
+    float: right;
+    color: lightslategrey;
+  }
+
+  .tweet-content {
+    word-wrap: break-word;
+    padding: 25px 15px;
+    background-color: white;
+    text-align: left;
+  }
+
+  footer {
+    height: 40px;
+    padding: 10px;
+    background-color: white;
+    overflow: auto;
+    border-top: 1px solid;
+    border-color: $grey-color;
+  }
+
+  .tweet-time {
+    float: left;
+    font-size: smaller;
+  }
+
+  .social {
+    float: right;
+    display: none;
+
+    a {
+      top: 0px;
+      margin-left: 10px;
+      color: $main-color;
+    }
+
+    a:hover {
+      cursor: pointer;
+      color: $light-green;
+    }
+  }
+
+  &.tweet-hover {
+    border-color: black;
+
+    h2 {
+      color: black;
+    }
+
+    .handle {
+      color: black;
+    }
+
+    .social {
+      display: block;
+    }
+  }
+}
+

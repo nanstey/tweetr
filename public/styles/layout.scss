@@ -4,7 +4,6 @@
  * Do not modify these two selectors, please
  */
 html {
-  font-family: 'Roboto Condensed', sans-serif;
   box-sizing: border-box;
 }
 *, *:before, *:after {
@@ -16,10 +15,10 @@ html {
  */
 
 body {
-
+  font-family: 'Roboto Condensed', sans-serif;
   margin: 0;
   color: #244751;
-  background-color: #eee;
+  background-color: $grey-color;
 }
 
 main {
