@@ -4,19 +4,13 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-// function timeAgo(timestamp){
-//   return 'A long time ago...';
-// }
-
 function createTweetElement(tweetObj){
   var $tweet = $("<article>").addClass("tweet");
   var $header = $('<header>');
   var $img = $('<img>').attr('src', tweetObj.user.avatars.small );
   var $name = $('<h2>').text(tweetObj.user.name);
   var $handle = $('<span>').addClass('handle').text(tweetObj.user.handle);
-  $header.append($img);
-  $header.append($name);
-  $header.append($handle);
+  $header.append($img, $name, $handle);
   $tweet.append($header);
 
   var $content = $('<div>').addClass('tweet-content');
@@ -30,13 +24,12 @@ function createTweetElement(tweetObj){
     .attr('datetime', date )
     .text( date );
   $footer.append($time);
+
   var $social = $('<div>').addClass('social');
   var $reply = $('<a>').addClass('icon reply fa fa-flag');
   var $retweet = $('<a>').addClass('icon retweet fa fa-retweet');
   var $favorite = $('<a>').addClass('icon favorite fa fa-heart');
-  $social.append($reply);
-  $social.append($retweet);
-  $social.append($favorite);
+  $social.append($reply, $retweet, $favorite);
   $footer.append($social);
   $tweet.append($footer);
 
@@ -91,7 +84,8 @@ $(document).ready( function(){
   $('#submit-tweet').on('click', function (event){
     event.preventDefault();
     var count = Number( $('.counter').text() );
-    if (count === 140){
+    var text = $('form textarea').val().trim();
+    if (count === 140 || text === ''){
       flash('Empty Tweet!');
     } else if (count >= 0){
       $.ajax({
